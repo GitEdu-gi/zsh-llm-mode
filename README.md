@@ -53,14 +53,14 @@ export ZSH_LLM_MODE_CMD='ollama run phi4-mini:3.8b'
 
 You can change it any time.
 
+#### Ollama
+  ```zsh
+  export ZSH_LLM_MODE_CMD='ollama run qwen3:8b --think=false --hidethinking'
+  ```
+
 #### SGPT  
   ```zsh
   export ZSH_LLM_MODE_CMD='sgpt --model gpt-4'
-  ```
-
-#### Ollama  
-  ```zsh
-  export ZSH_LLM_MODE_CMD='ollama run qwen3:8b --think=false --hidethinking'
   ```
 
 #### AWS Q Chat  
