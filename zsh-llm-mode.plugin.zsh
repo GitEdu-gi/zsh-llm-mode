@@ -93,7 +93,7 @@ function llm-accept-line {
     # Temporarily tweak prompt to be empty
     PROMPT=""
     zle reset-prompt
-    zle redisplay
+    zle -R
     print -P "%F{cyan}LLM>%f $input"
 
     # Spinner
