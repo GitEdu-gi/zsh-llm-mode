@@ -90,10 +90,11 @@ function llm-accept-line {
     BUFFER=""
     llm_BUFFER=""
 
+    # Temporarily tweak prompt to be empty
+    PROMPT=""
     zle reset-prompt
     zle redisplay
-
-    print -P "%F{yellow}[LLM query]:%f $input"
+    print -P "%F{cyan}LLM>%f $input"
 
     # Spinner
     local spin_chars='|/-\'
@@ -122,6 +123,7 @@ function llm-accept-line {
           wait $LLM_SPINNER_PID 2>/dev/null
           LLM_SPINNER_PID=0
           printf "\r"
+          print -P "%F{green}LLM:%f"
           first=0
         fi
         print -- "$line"
@@ -135,6 +137,7 @@ function llm-accept-line {
       wait $LLM_SPINNER_PID 2>/dev/null
       LLM_SPINNER_PID=0
       printf "\r"
+      print -P "%F{green}LLM:%f"
       print -- "$output"
     fi
 
