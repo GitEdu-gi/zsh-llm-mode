@@ -48,38 +48,41 @@ antidote bundle oleks-dev/zsh-llm-mode
 Set the backend command before loading the plugin:
 
 ```zsh
-export ZSH_LLM_MODE_CMD='ollama run qwen3:8b --think=false --hidethinking'
+export ZSH_LLM_MODE_CMD='ollama run phi4-mini:3.8b'
 ```
 
-You can change it any time, for example:
+You can change it any time.
 
-- SGPT  
+#### SGPT  
   ```zsh
   export ZSH_LLM_MODE_CMD='sgpt --model gpt-4'
   ```
 
-- Ollama
+#### Ollama  
   ```zsh
-  export ZSH_LLM_MODE_CMD='ollama run phi4-mini:3.8b --think=false --hidethinking'
+  export ZSH_LLM_MODE_CMD='ollama run qwen3:8b --think=false --hidethinking'
   ```
 
-- AWS Q Chat
+#### AWS Q Chat  
   ```zsh
   export ZSH_LLM_MODE_CMD='q chat --no-interactive'
   ```
 
-- MLX LM
+#### MLX LM  
   ```zsh
   export ZSH_LLM_MODE_CMD='mlx_lm.generate --model /Users/guest/.cache/huggingface/hub/models--mlx-community--Mistral-7B-Instruct-v0.3-4bit/snapshots/a4b8f870474b0eb527f466a03fbc187830d271f5 --prompt -'
   ```
 
-- OpenAI Codex
+#### OpenAI Codex  
   ```zsh
   export ZSH_LLM_MODE_CMD='codex exec --model gpt-5'
   ```
 
 
-#### Streaming setup
+> Make sure your backend command reads from stdin and writes to stdout — that’s all the plugin needs.
+
+
+### Streaming setup
 
 By default plugin returns LLM output in full when received.
 For streaming line by line you need to have `stdbuf` or `gstdbuf` which would be detected automatically.
