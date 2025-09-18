@@ -53,6 +53,7 @@ function llm-toggle {
   if (( LLM_MODE )); then
     llm_BUFFER=$BUFFER
     BUFFER=$shell_BUFFER
+    CURSOR=${#BUFFER}
     LLM_MODE=0
   else
     shell_BUFFER=$BUFFER
@@ -71,6 +72,7 @@ function llm-cancel {
   if (( LLM_MODE )); then
     llm_BUFFER=$BUFFER
     BUFFER=$shell_BUFFER
+    CURSOR=${#BUFFER}
     LLM_MODE=0
     llm-update-prompt
     zle reset-prompt
@@ -148,6 +150,7 @@ function llm-accept-line {
     LLM_MODE=0
     llm-update-prompt
     BUFFER=$shell_BUFFER
+    CURSOR=${#BUFFER}
     zle reset-prompt
     zle redisplay
   else
