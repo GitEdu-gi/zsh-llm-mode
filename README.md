@@ -16,6 +16,11 @@ Toggle into a prompt where you can draft multi-line queries, send them to an LLM
 
 ---
 
+## Quick Demo
+![Demo](demo.gif)
+
+---
+
 ## Installation
 
 Clone and source manually:
