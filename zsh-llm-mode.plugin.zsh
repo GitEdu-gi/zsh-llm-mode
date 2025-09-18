@@ -17,6 +17,15 @@ typeset -g llm_BUFFER=""
 typeset -g shell_BUFFER=""
 typeset -g DEFAULT_PROMPT=${PROMPT:-'➜ '}
 
+# --- Buffering detection ---
+if command -v stdbuf >/dev/null; then
+  _ZSH_LLM_STDBUF=(stdbuf -oL -eL)
+elif command -v gstdbuf >/dev/null; then
+  _ZSH_LLM_STDBUF=(gstdbuf -oL -eL)
+else
+  _ZSH_LLM_STDBUF=()  # fallback: no streaming, full output at once
+fi
+
 # --- Helpers ---
 function llm-update-prompt {
   if (( LLM_MODE )); then
@@ -102,18 +111,32 @@ function llm-accept-line {
     local -a backend_cmd
     backend_cmd=(${=ZSH_LLM_MODE_CMD})
     local first=1
-    exec 3< <(echo "$input" | stdbuf -oL -eL "${backend_cmd[@]}" 2>&1)
-    while IFS= read -r line <&3; do
-      if (( first )); then
-        [[ $LLM_SPINNER_PID -gt 0 ]] && kill $LLM_SPINNER_PID 2>/dev/null
-        wait $LLM_SPINNER_PID 2>/dev/null
-        LLM_SPINNER_PID=0
-        printf "\r"
-        first=0
-      fi
-      print -- "$line"
-    done
-    exec 3<&-
+
+    if [[ -n $_ZSH_LLM_STDBUF ]]; then
+      # Stream mode
+      exec 3< <(echo "$input" | "${_ZSH_LLM_STDBUF[@]}" "${backend_cmd[@]}" 2>&1)
+      local first=1
+      while IFS= read -r line <&3; do
+        if (( first )); then
+          [[ $LLM_SPINNER_PID -gt 0 ]] && kill $LLM_SPINNER_PID 2>/dev/null
+          wait $LLM_SPINNER_PID 2>/dev/null
+          LLM_SPINNER_PID=0
+          printf "\r"
+          first=0
+        fi
+        print -- "$line"
+      done
+      exec 3<&-
+    else
+      # Fallback: capture all output, print once
+      local output
+      output=$(echo "$input" | "${backend_cmd[@]}" 2>&1)
+      [[ $LLM_SPINNER_PID -gt 0 ]] && kill $LLM_SPINNER_PID 2>/dev/null
+      wait $LLM_SPINNER_PID 2>/dev/null
+      LLM_SPINNER_PID=0
+      printf "\r"
+      print -- "$output"
+    fi
 
     [[ $LLM_SPINNER_PID -gt 0 ]] && kill $LLM_SPINNER_PID 2>/dev/null
     wait $LLM_SPINNER_PID 2>/dev/null

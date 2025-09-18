@@ -51,6 +51,16 @@ You can change it any time, for example:
 export ZSH_LLM_MODE_CMD='sgpt --model gpt-4'
 ```
 
+#### Streaming setup
+
+By default plugin returns LLM output in full when received.
+For streaming line by line you need to have `stdbuf` or `gstdbuf` which would be detected automatically.
+
+On macOS you can install GNU coreutils and use `gstdbuf`:
+```zsh
+brew install coreutils
+```
+
 ---
 
 ## Usage
