@@ -17,6 +17,7 @@ Toggle into a prompt where you can draft multi-line queries, send them to an LLM
 ---
 
 ## Quick Demo
+Interactive LLM scratchpad for Zsh — toggle into query mode and stream answers inline.
 ![Demo](demo.gif)
 
 ---
