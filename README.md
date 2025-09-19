@@ -1,6 +1,6 @@
 # zsh-llm-mode
 
-Interactive LLM scratchpad for your Zsh.  
+Quick LLM scratchpad inside your Zsh — ask, get an answer, move on.  
 Toggle into a prompt where you can draft multi-line queries, send them to an LLM, and stream replies directly in your shell.
 
 ---
