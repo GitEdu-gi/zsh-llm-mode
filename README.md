@@ -7,12 +7,13 @@ Toggle into a prompt where you can draft multi-line queries, send them to an LLM
 
 ## Features
 - Toggle between shell and LLM mode with **Ctrl-Q**
-- Takes your entered shell command into a prompt
 - Multi-line editing in LLM mode (**Ctrl-J** inserts a newline)
+- Takes your entered shell command input into a prompt and returns it back
+- LLM prompt is buffered until you submit it or toggle the tool with a command line input
 - Cancel with **Esc** or **Ctrl-C**
 - Spinner while waiting for first response
 - Streamed output from your llm tool
-- Works with any CLI LLM (Ollama, sgpt, etc.)
+- Works with any CLI LLM that supports stdin/stdout (Ollama, sgpt, AWS Q Chat, MLX LM, Google Gemini CLI, OpenAI Codex, etc.)
 
 ---
 
@@ -54,32 +55,38 @@ export ZSH_LLM_MODE_CMD='ollama run phi4-mini:3.8b'
 You can change it any time.
 
 #### Ollama
-  ```zsh
-  export ZSH_LLM_MODE_CMD='ollama run qwen3:8b --think=false --hidethinking'
-  ```
+```zsh
+export ZSH_LLM_MODE_CMD='ollama run qwen3:8b --think=false --hidethinking'
+```
 
 #### SGPT  
-  ```zsh
-  export ZSH_LLM_MODE_CMD='sgpt --model gpt-4'
-  ```
+```zsh
+export ZSH_LLM_MODE_CMD='sgpt --model gpt-4'
+```
 
 #### AWS Q Chat  
-  ```zsh
-  export ZSH_LLM_MODE_CMD='q chat --no-interactive'
-  ```
+```zsh
+export ZSH_LLM_MODE_CMD='q chat --no-interactive'
+```
 
 #### MLX LM  
-  ```zsh
-  export ZSH_LLM_MODE_CMD='mlx_lm.generate --model /Users/guest/.cache/huggingface/hub/models--mlx-community--Mistral-7B-Instruct-v0.3-4bit/snapshots/a4b8f870474b0eb527f466a03fbc187830d271f5 --prompt -'
-  ```
+```zsh
+export ZSH_LLM_MODE_CMD='mlx_lm.generate --model /Users/guest/.cache/huggingface/hub/models--mlx-community--Mistral-7B-Instruct-v0.3-4bit/snapshots/a4b8f870474b0eb527f466a03fbc187830d271f5 --prompt -'
+```
+
+#### Google Gemini  
+```zsh
+export ZSH_LLM_MODE_CMD='gemini'
+```
 
 #### OpenAI Codex  
-  ```zsh
-  export ZSH_LLM_MODE_CMD='codex exec --model gpt-5'
-  ```
+```zsh
+export ZSH_LLM_MODE_CMD='codex exec --model gpt-5'
+```
 
 
 > Make sure your backend command reads from stdin and writes to stdout — that’s all the plugin needs.
+> If your LLM cli tool works like `echo "hello" | gemini` then it can be used without problems.
 
 
 ### Streaming setup
